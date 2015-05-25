@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codepath.apps.MyTwitter.ComposeFragment"
+    android:padding="10dp">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/btCancel"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweet"
+        android:id="@+id/btPost"
+        android:background="@android:color/holo_blue_bright"
+        android:textColor="@android:color/white"
+        android:layout_alignTop="@+id/btCancel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivProfileImageCompose"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/btCancel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="username"
+        android:id="@+id/tvUserNameCompose"
+        android:layout_alignTop="@+id/ivProfileImageCompose"
+        android:layout_toRightOf="@+id/ivProfileImageCompose"
+        android:layout_toEndOf="@+id/ivProfileImageCompose"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etTweetBody"
+        android:layout_below="@+id/ivProfileImageCompose"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:minHeight="150dp"
+        android:hint="What's happening?"
+        android:gravity="top"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="140"
+        android:textColor="@color/light_gray"
+        android:id="@+id/tvCount"
+        android:layout_alignTop="@+id/btPost"
+        android:layout_toLeftOf="@+id/btPost"
+        android:layout_toStartOf="@+id/btPost"
+        android:gravity="center_vertical"
+        android:layout_alignBottom="@+id/btPost"
+        android:layout_marginRight="10dp"/>
+</RelativeLayout>
