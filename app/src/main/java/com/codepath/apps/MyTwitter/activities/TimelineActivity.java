@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
-import com.codepath.apps.MyTwitter.ComposeFragment;
-import com.codepath.apps.MyTwitter.EndlessScrollListener;
+import com.codepath.apps.MyTwitter.fragments.ComposeFragment;
+import com.codepath.apps.MyTwitter.listeners.EndlessScrollListener;
 import com.codepath.apps.MyTwitter.R;
-import com.codepath.apps.MyTwitter.TweetsArrayAdapter;
+import com.codepath.apps.MyTwitter.adapters.TweetsArrayAdapter;
 import com.codepath.apps.MyTwitter.TwitterApplication;
 import com.codepath.apps.MyTwitter.TwitterClient;
 import com.codepath.apps.MyTwitter.models.Tweet;

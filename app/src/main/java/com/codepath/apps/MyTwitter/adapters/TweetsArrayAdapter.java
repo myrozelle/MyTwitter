@@ -1,4 +1,4 @@
-package com.codepath.apps.MyTwitter;
+package com.codepath.apps.MyTwitter.adapters;
 
 import android.content.Context;
 import android.text.Html;
@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.codepath.apps.MyTwitter.R;
 import com.codepath.apps.MyTwitter.models.Tweet;
 import com.squareup.picasso.Picasso;
 
@@ -27,6 +29,8 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
         TextView tvUserName;
         TextView tvBody;
         TextView tvTimeStamp;
+        Button btRetweet;
+        Button btFavorite;
     }
 
     public TweetsArrayAdapter(Context context, List<Tweet> tweets) {
@@ -49,6 +53,8 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
             viewHolder.tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
             viewHolder.tvBody = (TextView) convertView.findViewById(R.id.tvBody);
             viewHolder.tvTimeStamp = (TextView) convertView.findViewById(R.id.tvTimeStamp);
+            viewHolder.btRetweet = (Button) convertView.findViewById(R.id.btRetweet);
+            viewHolder.btFavorite = (Button) convertView.findViewById(R.id.btFavorite);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -60,6 +66,8 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
         viewHolder.tvUserName.setText(TextUtils.concat(formattedUserName, " ", formattedScreenName));
         viewHolder.tvBody.setText(tweet.getBody());
         viewHolder.tvTimeStamp.setText(tweet.getRelativeCreatedAtShort());
+        viewHolder.btRetweet.setText(tweet.getRetweetCount()+"");
+        viewHolder.btFavorite.setText(tweet.getFavoriteCount()+"");
         viewHolder.ivProfileImage.setImageResource(android.R.color.transparent); // clear out the old image for recycled view
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).into(viewHolder.ivProfileImage);
         //return the view to be inserted into the list

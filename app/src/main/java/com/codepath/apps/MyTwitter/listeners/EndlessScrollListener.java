@@ -1,4 +1,4 @@
-package com.codepath.apps.MyTwitter;
+package com.codepath.apps.MyTwitter.listeners;
 
 import android.util.Log;
 import android.widget.AbsListView;

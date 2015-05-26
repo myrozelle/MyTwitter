@@ -1,4 +1,4 @@
-package com.codepath.apps.MyTwitter;
+package com.codepath.apps.MyTwitter.fragments;
 
 
 import android.os.Bundle;
@@ -11,9 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.codepath.apps.MyTwitter.R;
+import com.codepath.apps.MyTwitter.TwitterApplication;
+import com.codepath.apps.MyTwitter.TwitterClient;
 import com.codepath.apps.MyTwitter.models.Tweet;
 import com.codepath.apps.MyTwitter.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -26,10 +30,11 @@ import org.json.JSONObject;
 public class ComposeFragment extends DialogFragment {
 
     private Button btPost;
-    private Button btCancel;
+    private ImageButton btCancel;
     private TextView tvCount;
     private ImageView ivProfileImageCompose;
     private TextView tvUserNameCompose;
+    private TextView tvScreenNameCompose;
     private EditText etTweetBody;
     private static int MAX_TWEET_LENGTH = 140;
 
@@ -65,15 +70,17 @@ public class ComposeFragment extends DialogFragment {
 
     private void setupViews(View view, User user, final TwitterClient client) {
         btPost = (Button) view.findViewById(R.id.btPost);
-        btCancel = (Button) view.findViewById(R.id.btCancel);
+        btCancel = (ImageButton) view.findViewById(R.id.btCancel);
         ivProfileImageCompose = (ImageView) view.findViewById(R.id.ivProfileImageCompose);
         tvUserNameCompose = (TextView) view.findViewById(R.id.tvUserNameCompose);
+        tvScreenNameCompose = (TextView) view.findViewById(R.id.tvScreenNameCompose);
         etTweetBody = (EditText) view.findViewById(R.id.etTweetBody);
         tvCount = (TextView) view.findViewById(R.id.tvCount);
 
         tvCount.setText(Integer.toString(MAX_TWEET_LENGTH));
         btPost.setEnabled(false); //not enable until user type in tweet
         tvUserNameCompose.setText(user.getName());
+        tvScreenNameCompose.setText("@" + user.getScreenName());
         Picasso.with(getActivity()).load(user.getProfileImageUrl()).into(ivProfileImageCompose);
 
         //buttons listeners
