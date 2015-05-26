@@ -18,10 +18,10 @@ Optional User Stories:
 - [x] User can refresh tweets timeline by pulling down to refresh (i.e pull-to-refresh)
 - [x] User can open the twitter app offline and see last loaded tweets
   - [x] Tweets are persisted into sqlite and can be displayed from the local DB
-- [] User can tap a tweet to display a "detailed" view of that tweet
-- [] User can select "reply" from detail view to respond to a tweet
-- [] Improve the user interface and theme the app to feel "twitter branded"
-- [] User can see embedded image media within the tweet detail view
+- [ ] User can tap a tweet to display a "detailed" view of that tweet
+- [ ] User can select "reply" from detail view to respond to a tweet
+- [ ] Improve the user interface and theme the app to feel "twitter branded"
+- [ ] User can see embedded image media within the tweet detail view
 - [x] Compose activity is replaced with a modal overlay
 
 Walkthrough
