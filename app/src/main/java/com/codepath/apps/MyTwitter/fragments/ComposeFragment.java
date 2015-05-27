@@ -71,9 +71,9 @@ public class ComposeFragment extends DialogFragment {
     private void setupViews(View view, User user, final TwitterClient client) {
         btPost = (Button) view.findViewById(R.id.btPost);
         btCancel = (ImageButton) view.findViewById(R.id.btCancel);
-        ivProfileImageCompose = (ImageView) view.findViewById(R.id.ivProfileImageCompose);
-        tvUserNameCompose = (TextView) view.findViewById(R.id.tvUserNameCompose);
-        tvScreenNameCompose = (TextView) view.findViewById(R.id.tvScreenNameCompose);
+        ivProfileImageCompose = (ImageView) view.findViewById(R.id.ivProfileImage);
+        tvUserNameCompose = (TextView) view.findViewById(R.id.tvUserName);
+        tvScreenNameCompose = (TextView) view.findViewById(R.id.tvScreenName);
         etTweetBody = (EditText) view.findViewById(R.id.etTweetBody);
         tvCount = (TextView) view.findViewById(R.id.tvCount);
 

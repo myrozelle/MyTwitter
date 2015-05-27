@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="@dimen/default_space"
+    android:descendantFocusability="blocksDescendants"
+    >
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/profile_image_width"
+        android:layout_height="@dimen/profile_image_height"
         android:id="@+id/ivProfileImage"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:paddingRight="5dp" />
+        android:layout_marginRight="@dimen/small_space" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,8 +33,6 @@
         android:layout_toEndOf="@+id/ivProfileImage"
         android:ellipsize="end"
         android:autoLink="all"
-        android:linksClickable="true"
-
         />
 
     <TextView
@@ -54,10 +54,10 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/stat_button_height"
             android:text="1"
             android:textColor="@color/light_gray"
-            android:textSize="12sp"
+            android:textSize="@dimen/stat_text_size"
             android:gravity="center_vertical|left"
             android:background="@android:color/transparent"
             android:id="@+id/btRetweet"
@@ -65,10 +65,10 @@
             />
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/stat_button_height"
             android:text="1"
             android:textColor="@color/light_gray"
-            android:textSize="12sp"
+            android:textSize="@dimen/stat_text_size"
             android:gravity="center_vertical|left"
             android:background="@android:color/transparent"
             android:id="@+id/btFavorite"

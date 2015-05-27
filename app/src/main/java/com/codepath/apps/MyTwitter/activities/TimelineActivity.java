@@ -1,5 +1,6 @@
 package com.codepath.apps.MyTwitter.activities;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -8,17 +9,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
-import com.codepath.apps.MyTwitter.fragments.ComposeFragment;
-import com.codepath.apps.MyTwitter.listeners.EndlessScrollListener;
 import com.codepath.apps.MyTwitter.R;
-import com.codepath.apps.MyTwitter.adapters.TweetsArrayAdapter;
 import com.codepath.apps.MyTwitter.TwitterApplication;
 import com.codepath.apps.MyTwitter.TwitterClient;
+import com.codepath.apps.MyTwitter.adapters.TweetsArrayAdapter;
+import com.codepath.apps.MyTwitter.fragments.ComposeFragment;
+import com.codepath.apps.MyTwitter.listeners.EndlessScrollListener;
 import com.codepath.apps.MyTwitter.models.Tweet;
 import com.codepath.apps.MyTwitter.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -52,11 +55,26 @@ public class TimelineActivity extends ActionBarActivity implements ComposeFragme
     }
 
     private void setupViews() {
+        //add icon to action bar
+        /*getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        */
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         lvTweets = (ListView) findViewById(R.id.lv_tweets);
         tweets = new ArrayList<>();
         aTweets = new TweetsArrayAdapter(this, tweets);
         lvTweets.setAdapter(aTweets);
+        lvTweets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(TimelineActivity.this, "list item clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(TimelineActivity.this, DetailActivity.class);
+                i.putExtra("tweet", tweets.get(position));
+                startActivity(i);
+            }
+        });
+
         lvTweets.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore(int totalItemsCount) {
@@ -64,6 +82,8 @@ public class TimelineActivity extends ActionBarActivity implements ComposeFragme
                 populateTimeLine(max_id - 1);
             }
         });
+
+
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

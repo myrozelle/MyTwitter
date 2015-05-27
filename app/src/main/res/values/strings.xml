@@ -3,12 +3,16 @@
 
     <string name="app_name">MyTwitter</string>
     <string name="login_label">Connect to Twitter</string>
-    <string name="title_activity_timeline">Home Timeline</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_timeline">Home</string>
     <string name="action_settings">Settings</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="post_button_text">Tweet</string>
+    <string name="tweet_hint">What\'s happening?</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_detail">Tweet</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

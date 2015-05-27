@@ -82,6 +82,10 @@ public class Tweet extends Model implements Parcelable{
     private int retweetCount;
     @Column(name = "favorite_count")
     private int favoriteCount;
+    @Column(name = "media_url")
+    private String mediaURL;
+
+
 
     public String getBody() {
         return body;
@@ -99,6 +103,10 @@ public class Tweet extends Model implements Parcelable{
         return getRelativeTimeAgoShort(createdAt);
     }
 
+    public String getDetailCreatedAt() {
+        return getDetailDate(createdAt);
+    }
+
     public User getUser() {
         return user;
     }
@@ -109,6 +117,10 @@ public class Tweet extends Model implements Parcelable{
 
     public int getFavoriteCount() {
         return favoriteCount;
+    }
+
+    public String getMediaURL() {
+        return mediaURL;
     }
 
     // Make sure to have a default constructor for every ActiveAndroid model
@@ -128,6 +140,10 @@ public class Tweet extends Model implements Parcelable{
             tweet.user = User.findOrCreateFromJson(obj.getJSONObject("user"));
             tweet.retweetCount = obj.getInt("retweet_count");
             tweet.favoriteCount = obj.getInt("favorite_count");
+            JSONArray mediaArray = obj.getJSONObject("entities").getJSONArray("media");
+            if (mediaArray != null) {
+                tweet.mediaURL = mediaArray.getJSONObject(0).getString("media_url");
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -196,8 +212,25 @@ public class Tweet extends Model implements Parcelable{
             return tString.split(" ")[0] + "M";
         } else if (tString.contains("year")) {
             return tString.split(" ")[0] + "y";
+        } else if (tString.contains("moments ago")) {
+            return "just now";
         }
         return tString;
+    }
+
+    private static String getDetailDate(String rawJsonDate) {
+        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+        sf.setLenient(true);
+
+        String detailDate = "";
+        try {
+            long dateMillis = sf.parse(rawJsonDate).getTime();
+            detailDate = new SimpleDateFormat("M/d/yy, h:m a").format(new Date(dateMillis));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return detailDate;
     }
 
     //parcelable
@@ -214,6 +247,7 @@ public class Tweet extends Model implements Parcelable{
         dest.writeString(createdAt);
         dest.writeInt(retweetCount);
         dest.writeInt(favoriteCount);
+        dest.writeString(mediaURL);
     }
 
     public static final Parcelable.Creator<Tweet> CREATOR = new Parcelable.Creator<Tweet>() {
@@ -235,5 +269,6 @@ public class Tweet extends Model implements Parcelable{
         createdAt = in.readString();
         retweetCount = in.readInt();
         favoriteCount = in.readInt();
+        mediaURL = in.readString();
     }
 }

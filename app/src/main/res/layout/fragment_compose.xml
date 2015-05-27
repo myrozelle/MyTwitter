@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.codepath.apps.MyTwitter.fragments.ComposeFragment"
-    android:padding="10dp">
+    android:padding="@dimen/default_space">
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel_button_text"
         android:id="@+id/btCancel"
         android:src="@drawable/ic_cancel"
         android:background="@android:color/transparent"
@@ -17,11 +17,12 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tweet"
+        android:layout_width="@dimen/post_button_width"
+        android:layout_height="@dimen/post_button_height"
+        android:text="@string/post_button_text"
+        android:textSize="@dimen/post_text_size"
         android:id="@+id/btPost"
-        android:background="@android:color/holo_blue_bright"
+        android:background="@drawable/states_button"
         android:textColor="@android:color/white"
         android:layout_alignTop="@+id/btCancel"
         android:layout_alignParentRight="true"
@@ -29,11 +30,11 @@
         />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/ivProfileImageCompose"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="@dimen/profile_image_width"
+        android:layout_height="@dimen/profile_image_height"
+        android:id="@+id/ivProfileImage"
+        android:layout_marginRight="@dimen/default_space"
+        android:layout_marginTop="@dimen/default_space"
         android:layout_below="@+id/btCancel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -42,32 +43,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="username"
-        android:id="@+id/tvUserNameCompose"
-        android:layout_alignTop="@+id/ivProfileImageCompose"
-        android:layout_toRightOf="@+id/ivProfileImageCompose"
-        android:layout_toEndOf="@+id/ivProfileImageCompose"
+        android:id="@+id/tvUserName"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:layout_toEndOf="@+id/ivProfileImage"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="screenname"
-        android:id="@+id/tvScreenNameCompose"
+        android:id="@+id/tvScreenName"
         android:textColor="@color/light_gray"
-        android:layout_below="@+id/tvUserNameCompose"
-        android:layout_alignLeft="@+id/tvUserNameCompose"
-        android:layout_alignStart="@+id/tvUserNameCompose" />
+        android:layout_below="@+id/tvUserName"
+        android:layout_alignLeft="@+id/tvUserName"
+        android:layout_alignStart="@+id/tvUserName" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/etTweetBody"
-        android:layout_below="@+id/ivProfileImageCompose"
+        android:layout_below="@+id/ivProfileImage"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:minHeight="150dp"
-        android:hint="What's happening?"
+        android:hint="@string/tweet_hint"
+        android:layout_marginTop="@dimen/default_space"
         android:gravity="top"
+        android:background="@android:color/transparent"
         />
 
     <TextView
@@ -81,7 +84,7 @@
         android:layout_toStartOf="@+id/btPost"
         android:gravity="center_vertical"
         android:layout_alignBottom="@+id/btPost"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="@dimen/default_space"/>
 
 
 </RelativeLayout>
