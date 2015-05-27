@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="light_gray">#A9A9A9</color>
+    <color name="very_light_gray">#d3d3d3</color>
     <color name="twitter_blue">#4099FF</color>
     <color name="twitter_pale_blue">#ADCEFF</color>
     <color name="default_background">@android:color/white</color>
